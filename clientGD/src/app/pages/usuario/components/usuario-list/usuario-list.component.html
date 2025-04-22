@@ -1,0 +1,38 @@
+<div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Usuarios</h1>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded" (click)="abrirModal()">Crear Usuarios</button>
+  </div>
+  
+  <!-- Tabla de áreas -->
+  <table class="w-full table-auto border-collapse border border-gray-300">
+    <thead>
+      <tr>
+        <th class="border p-2">ID</th>
+        <th class="border p-2">Nombre</th>
+        <th class="border p-2">correo</th>
+        <th class="border p-2">rol</th>
+        <th class="border p-2">area</th>
+        <th class="border p-2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td class="border p-2">{{ usuario.usuarioId }}</td>
+        <td class="border p-2">{{ usuario.nombre }}</td>
+        <td class="border p-2">{{ usuario.user }}</td>
+        <td class="border p-2">{{ usuario.rolId }}</td>
+        <td class="border p-2">{{ usuario.areaId }}</td>
+        <td class="border p-2">
+          <button class="text-blue-600" (click)="abrirModal(usuario)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Modal -->
+  <app-usuario-form
+  *ngIf="mostrarModal"
+  [usuario]="usuarioSeleccionado"
+  (cerrar)="cerrarModal()"
+  (guardado)="cargarUsuarios()">
+</app-usuario-form>

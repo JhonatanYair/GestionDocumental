@@ -15,8 +15,8 @@ namespace GD.Services
         Task<List<Usuario>> GetAllUsuarios();
         Task<List<Usuario>> GetAllUsuariosByAreaRac(int areaId);
         Task<LoginResponse> GetLogin(LoginRequest loginRequest);
-        Task<UserResponse> CreateUser(CreateUserRequest userRequest);
-        Task<UserResponse> UpdateUser(UpdateUserRequest userRequest);
+        Task<Usuario> CreateUser(CreateUserRequest userRequest);
+        Task<Usuario> UpdateUser(int usuarioId, UpdateUserRequest userRequest);
         Task<bool> DeleteUser(int usuarioId);
     }
 
@@ -36,7 +36,9 @@ namespace GD.Services
                 {
                     UsuarioId = u.UsuarioId,
                     Nombre = u.Nombre,
+                    User = u.User,
                     AreaId = u.AreaId,
+                    RolId = u.RolId,
                 })
                 .ToListAsync();
         }
@@ -84,11 +86,12 @@ namespace GD.Services
                 Token = tokenHandler.WriteToken(token),
                 Nombre = login.Nombre,
                 User = loginRequest.Usuario,
-                SedeId = login.Area.SedeId
+                SedeId = login.Area.SedeId,
+                RolId = login.RolId
             };
         }
 
-        public async Task<UserResponse> CreateUser(CreateUserRequest userRequest)
+        public async Task<Usuario> CreateUser(CreateUserRequest userRequest)
         {
             var user = new Usuario 
             {
@@ -102,33 +105,23 @@ namespace GD.Services
             await _context.Usuarios.AddAsync(user);
             await _context.SaveChangesAsync();
 
-            return new UserResponse
-            {
-                UsuarioId = user.UsuarioId,
-                Nombre = userRequest.Nombre
-            };
+            return user;
 
         }
 
-        public async Task<UserResponse> UpdateUser(UpdateUserRequest userRequest)
+        public async Task<Usuario> UpdateUser(int usuarioId, UpdateUserRequest userRequest)
         {
-            var user = new Usuario
-            {
-                RolId = userRequest.RolId,
-                AreaId = userRequest.AreaId,
-                Nombre = userRequest.Nombre,
-                User = userRequest.User
-            };
+
+            var user = await _context.Usuarios.FirstOrDefaultAsync(p => p.UsuarioId == usuarioId);
+
+            user.Nombre = userRequest.Nombre;
+            user.RolId = userRequest.RolId;
+            user.User = userRequest.User;
+            user.AreaId = userRequest.AreaId;
 
             _context.Usuarios.Update(user);
             await _context.SaveChangesAsync();
-
-            return new UserResponse
-            {
-                UsuarioId = user.UsuarioId,
-                Nombre = userRequest.Nombre
-            };
-
+            return user;
         }
 
         public async Task<bool> DeleteUser(int usuarioId)

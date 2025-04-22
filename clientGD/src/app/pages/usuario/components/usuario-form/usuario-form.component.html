@@ -1,0 +1,26 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-full max-w-md">
+      <h2 class="text-xl font-bold mb-4">{{ usuario ? 'Editar usuario' : 'Nuevo Usuario' }}</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="mb-4">
+          <label class="block font-semibold mb-1">Nombre</label>
+          <input class="w-full border p-2 rounded" formControlName="nombre" />
+          <label class="block font-semibold mb-1">Correo</label>
+          <input class="w-full border p-2 rounded" formControlName="user" />
+          <label class="block font-semibold mb-1">Rol</label>
+          <input class="w-full border p-2 rounded" formControlName="rolId" />
+          <label class="block font-semibold mb-1">Area</label>
+          <input class="w-full border p-2 rounded" formControlName="areaId" />
+          <label class="block font-semibold mb-1">Contraseña</label>
+          <input class="w-full border p-2 rounded" formControlName="password" />
+        </div>
+  
+        <div class="flex justify-end gap-2">
+          <button type="button" (click)="cerrar.emit()" class="bg-gray-300 px-4 py-2 rounded">Cancelar</button>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
