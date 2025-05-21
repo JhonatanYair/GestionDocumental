@@ -1,0 +1,76 @@
+/* Contenedor general */
+h1 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600;     /* font-semibold */
+    color: #1f2937;       /* text-gray-800 */
+    margin-bottom: 1.5rem;
+  }
+  
+  button {
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  button.bg-blue-600 {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  button.bg-blue-600:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem; /* text-sm */
+    color: #374151;      /* text-gray-700 */
+  }
+  
+  thead {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    color: #6b7280;            /* text-gray-600 */
+    text-transform: uppercase;
+    font-size: 0.75rem;        /* text-xs */
+    letter-spacing: 0.05em;    /* tracking-wider */
+    border-bottom: 1px solid #d1d5db; /* border-gray-300 */
+  }
+  
+  th, td {
+    padding: 0.75rem 1rem;     /* px-4 py-3 */
+    text-align: left;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #e5e7eb; /* border-b */
+    transition: background-color 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    background-color: #f9fafb; /* hover:bg-gray-50 */
+  }
+  
+  /* Botón de acción */
+  button.text-blue-600 {
+    background: none;
+    color: #2563eb;
+    padding: 0;
+    font-weight: 500;
+  }
+  
+  button.text-blue-600:hover {
+    color: #1e40af;
+  }
+  

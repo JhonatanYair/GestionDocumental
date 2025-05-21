@@ -14,6 +14,7 @@ import { finalize } from 'rxjs';
   selector: 'app-radicar-form',
   templateUrl: './radicar-form.component.html',
     standalone: true,
+    styleUrls: ['./radicar-form.component.css'],
     imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule], 
 })
 export class RadicarFormComponent implements OnInit {

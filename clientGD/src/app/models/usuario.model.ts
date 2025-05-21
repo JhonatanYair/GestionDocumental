@@ -1,6 +1,9 @@
 export interface Usuario {
     usuarioId: number;
     nombre: string;
-    areaId: string;
+    user: string;
+    rolId: number;
+    areaId: number;
+    password : string;
   }
   

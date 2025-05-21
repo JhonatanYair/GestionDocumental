@@ -37,17 +37,17 @@ namespace GD.Controllers
         }
 
         [Authorize]
-        [HttpPost("CreateUser")]
+        [HttpPost("CreateUsuario")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest userRequest)
         {
             return Ok(await _usuarioService.CreateUser(userRequest));
         }
 
         [Authorize]
-        [HttpPut("UpdateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest userRequest)
+        [HttpPut("UpdateUser/{usuarioId}")]
+        public async Task<IActionResult> UpdateUser(int usuarioId, [FromBody] UpdateUserRequest userRequest)
         {
-            return Ok(await _usuarioService.UpdateUser(userRequest));
+            return Ok(await _usuarioService.UpdateUser(usuarioId, userRequest));
         }
 
         [Authorize]

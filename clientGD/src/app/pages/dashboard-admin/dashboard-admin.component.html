@@ -1,1 +1,60 @@
-<p>dashboard-admin works!</p>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Administrador de Documentos</h1>
+    <button class="logout-btn">Cerrar sesión</button>
+  </header>
+
+  <div class="cards-container">
+    <div class="card bg-blue">
+      <h2>Total Documentos</h2>
+      <p>340</p>
+    </div>
+    <div class="card bg-yellow">
+      <h2>En Revisión</h2>
+      <p>28</p>
+    </div>
+    <div class="card bg-green">
+      <h2>Aprobados</h2>
+      <p>290</p>
+    </div>
+    <div class="card bg-red">
+      <h2>Rechazados</h2>
+      <p>22</p>
+    </div>
+  </div>
+
+  <section class="table-section">
+    <h2>Últimos Documentos Registrados</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Estado</th>
+          <th>Responsable</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1234</td>
+          <td>Informe General 2025.pdf</td>
+          <td>Informe</td>
+          <td><span class="status aprobado">Aprobado</span></td>
+          <td>Laura Méndez</td>
+          <td>22/04/2025</td>
+        </tr>
+        <tr>
+          <td>1235</td>
+          <td>Contrato Marco.docx</td>
+          <td>Contrato</td>
+          <td><span class="status revision">En Revisión</span></td>
+          <td>Carlos Ruiz</td>
+          <td>21/04/2025</td>
+        </tr>
+        <!-- Agrega más documentos aquí -->
+      </tbody>
+    </table>
+  </section>
+</div>

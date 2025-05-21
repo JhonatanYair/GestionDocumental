@@ -24,7 +24,20 @@ export class LoginComponent {
       next: (res: any) => {
         this.authService.guardarToken(res.token);
         this.authService.guardarSede(res.sedeId);
-        this.router.navigate(['/dashboard-admin']);
+        switch (res.rolId) {
+          case 1:
+            this.router.navigate(['/dashboard-admin']);
+            break;
+          case 2:
+            this.router.navigate(['/dashboard-gestionador']);
+            break;
+          case 3:
+            this.router.navigate(['/dashboard-radicador']);
+            break;
+          default:
+            this.router.navigate(['/login']); // Si por alguna razón el rol no existe
+            break;
+        }
       },
       error: (err) => {
         alert('Credenciales incorrectas');

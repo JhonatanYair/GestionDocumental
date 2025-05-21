@@ -14,34 +14,37 @@ export const routes: Routes = [
     path: 'dashboard-admin',
     component: DashboardAdminComponent,
     canActivate: [canActivateGuard],
-    data: { expectedRole: 1 } 
+    data: {allowedRoles: ['Admin'] } // Solo para Admin
   },
   {
     path: 'area-list',
     component: AreaListComponent,
-    canActivate: [canActivateGuard]
+    canActivate: [canActivateGuard],
+    data: {allowedRoles: ['Admin'] } // Solo para Admin
   },
   {
     path: 'radicar-form',
     component: RadicarFormComponent,
-    canActivate: [canActivateGuard]
+    canActivate: [canActivateGuard],
+    data: {  allowedRoles: ['Admin','Radicador'] } //Admin- radicador
   },
   {
     path: 'usuario-list',
     component: UsuarioListComponent,
-    canActivate: [canActivateGuard]
+    canActivate: [canActivateGuard],
+    data: {allowedRoles: ['Admin'] } // Solo para Admin
   },
   {
     path: 'dashboard-radicador',
     component: DashboardRadicadorComponent,
     canActivate: [canActivateGuard],
-    data: { expectedRole: 3 } 
+    data: {  allowedRoles: ['Admin','Radicador']  } // Solo para Admin - radicador
   },
   {
     path: 'dashboard-gestionador',
     component: DashboardGestionadorComponent,
     canActivate: [canActivateGuard],
-    data: { expectedRole: 2 } 
+    data: { allowedRoles: ['Admin','Gestionador']  } // Solo para Admin - gestionador
   },
   { path: '**', redirectTo: 'login' },
 ];

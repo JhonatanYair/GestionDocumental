@@ -1,35 +1,54 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4 max-w-md mx-auto">
-    <div>
-        <label class="block mb-1">Sede</label>
-        <select formControlName="sedeId" (change)="onSedeChange($event)" class="w-full border p-2 rounded">
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Panel de Radicación</h1>
+    <button class="logout-btn">Cerrar sesión</button>
+  </header>
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-6 max-w-md w-full p-8 bg-white rounded-lg shadow">
+
+      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Radicar Documento</h2>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Sede</label>
+        <select formControlName="sedeId" (change)="onSedeChange($event)"
+          class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
           <option value="" disabled selected>Seleccione una sede</option>
           <option *ngFor="let sede of sedes" [value]="sede.sedeId">{{ sede.nombre }}</option>
         </select>
       </div>
-      
-      <div *ngIf="areas.length > 0">
-        <label class="block mb-1 mt-3">Área</label>
-        <select formControlName="areaId" class="w-full border p-2 rounded" (change)="onAreaChange($event)" >
+
+      <div *ngIf="areas.length > 0" class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Área</label>
+        <select formControlName="areaId" (change)="onAreaChange($event)"
+          class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
           <option value="" disabled selected>Seleccione un área</option>
           <option *ngFor="let area of areas" [value]="area.areaId">{{ area.nombre }}</option>
         </select>
       </div>
-      
-      <div *ngIf="usuarios.length > 0">
-        <label class="block mb-1 mt-3">Usuario destino</label>
-        <select formControlName="usuarioId" class="w-full border p-2 rounded">
+
+      <div *ngIf="usuarios.length > 0" class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Usuario destino</label>
+        <select formControlName="usuarioId"
+          class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
           <option value="" disabled selected>Seleccione un usuario</option>
           <option *ngFor="let u of usuarios" [value]="u.usuarioId">{{ u.nombre }}</option>
         </select>
       </div>
-  
-    <div>
-      <label class="block">Documento</label>
-      <input type="file" (change)="onFileChange($event)" class="w-full" />
-    </div>
-  
-    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded" [disabled]="loading">
-      {{ loading ? 'Radicando...' : 'Radicar Documento' }}
-    </button>
-  </form>
-  
+
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Documento</label>
+        <input type="file" (change)="onFileChange($event)"
+          class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div class="pt-4">
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          [disabled]="loading">
+          {{ loading ? 'Radicando...' : 'Radicar Documento' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

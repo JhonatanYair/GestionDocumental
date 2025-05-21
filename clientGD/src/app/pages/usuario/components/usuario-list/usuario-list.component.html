@@ -1,36 +1,59 @@
-<div class="flex justify-between items-center mb-4">
-    <h1 class="text-2xl font-bold">Usuarios</h1>
-    <button class="bg-blue-600 text-white px-4 py-2 rounded" (click)="abrirModal()">Crear Usuarios</button>
+<div class="card shadow-md bg-white rounded-lg p-6">
+  <!-- Encabezado -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">Gestión de Usuarios</h1>
+      <p class="text-sm text-gray-500">Administra los usuarios registrados en el sistema</p>
+    </div>
+    <button 
+      class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-md transition"
+      (click)="abrirModal()">
+      + Crear Usuario
+    </button>
   </div>
-  
-  <!-- Tabla de áreas -->
-  <table class="w-full table-auto border-collapse border border-gray-300">
-    <thead>
-      <tr>
-        <th class="border p-2">ID</th>
-        <th class="border p-2">Nombre</th>
-        <th class="border p-2">correo</th>
-        <th class="border p-2">rol</th>
-        <th class="border p-2">area</th>
-        <th class="border p-2">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let usuario of usuarios">
-        <td class="border p-2">{{ usuario.usuarioId }}</td>
-        <td class="border p-2">{{ usuario.nombre }}</td>
-        <td class="border p-2">{{ usuario.user }}</td>
-        <td class="border p-2">{{ usuario.rolId }}</td>
-        <td class="border p-2">{{ usuario.areaId }}</td>
-        <td class="border p-2">
-          <button class="text-blue-600" (click)="abrirModal(usuario)">Editar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <!-- Modal -->
-  <app-usuario-form
+
+  <!-- Tabla de usuarios -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full text-sm text-left border border-gray-200 rounded-md overflow-hidden">
+      <thead class="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
+        <tr>
+          <th class="px-4 py-3 border-b">ID</th>
+          <th class="px-4 py-3 border-b">Nombre</th>
+          <th class="px-4 py-3 border-b">Correo</th>
+          <th class="px-4 py-3 border-b">Rol</th>
+          <th class="px-4 py-3 border-b">Área</th>
+          <th class="px-4 py-3 border-b text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+          *ngFor="let usuario of usuarios" 
+          class="hover:bg-gray-50 transition-colors border-b">
+          <td class="px-4 py-3">{{ usuario.usuarioId }}</td>
+          <td class="px-4 py-3">{{ usuario.nombre }}</td>
+          <td class="px-4 py-3">{{ usuario.user }}</td>
+          <td class="px-4 py-3">{{ usuario.rolId }}</td>
+          <td class="px-4 py-3">{{ usuario.areaId }}</td>
+          <td class="px-4 py-3 text-center">
+            <button 
+              class="text-blue-600 hover:text-blue-800 font-medium"
+              (click)="abrirModal(usuario)">
+              ✏️ Editar
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="usuarios.length === 0">
+          <td colspan="6" class="text-center py-6 text-gray-500">
+            No hay usuarios registrados.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal de usuario -->
+<app-usuario-form
   *ngIf="mostrarModal"
   [usuario]="usuarioSeleccionado"
   (cerrar)="cerrarModal()"

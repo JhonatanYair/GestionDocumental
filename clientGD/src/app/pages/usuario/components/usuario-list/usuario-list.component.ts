@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, UsuarioFormComponent, FormsModule, HttpClientModule], 
   templateUrl: './usuario-list.component.html',
-  //styleUrls: ['./usuario-list.component.scss']
+  styleUrls: ['./usuario-list.component.scss']
 })
 export class UsuarioListComponent implements OnInit {
   usuarios: Usuario[] = [];

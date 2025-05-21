@@ -53,6 +53,7 @@ builder.Services.AddScoped<IAreaService, AreaService>();
 builder.Services.AddScoped<ISedeService, SedeService>();
 builder.Services.AddScoped<IMinioService, MinioService>();
 builder.Services.AddScoped<IDocumentoService, DocumentoService>();
+builder.Services.AddScoped<IRolService, RolService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DGDbContext>(options =>

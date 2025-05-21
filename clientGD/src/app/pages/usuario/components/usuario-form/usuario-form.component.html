@@ -1,26 +1,67 @@
 <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-    <div class="bg-white p-6 rounded-lg w-full max-w-md">
-      <h2 class="text-xl font-bold mb-4">{{ usuario ? 'Editar usuario' : 'Nuevo Usuario' }}</h2>
-  
-      <form [formGroup]="form" (ngSubmit)="guardar()">
-        <div class="mb-4">
-          <label class="block font-semibold mb-1">Nombre</label>
-          <input class="w-full border p-2 rounded" formControlName="nombre" />
-          <label class="block font-semibold mb-1">Correo</label>
-          <input class="w-full border p-2 rounded" formControlName="user" />
-          <label class="block font-semibold mb-1">Rol</label>
-          <input class="w-full border p-2 rounded" formControlName="rolId" />
-          <label class="block font-semibold mb-1">Area</label>
-          <input class="w-full border p-2 rounded" formControlName="areaId" />
-          <label class="block font-semibold mb-1">Contraseña</label>
-          <input class="w-full border p-2 rounded" formControlName="password" />
-        </div>
-  
-        <div class="flex justify-end gap-2">
-          <button type="button" (click)="cerrar.emit()" class="bg-gray-300 px-4 py-2 rounded">Cancelar</button>
-          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Guardar</button>
-        </div>
-      </form>
-    </div>
+  <div class="bg-white w-full max-w-lg p-6 sm:p-8 rounded-xl shadow-lg">
+
+    <!-- Encabezado -->
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+      {{ usuario ? 'Editar Usuario' : 'Nuevo Usuario' }}
+    </h2>
+
+    <!-- Formulario -->
+    <form [formGroup]="form" (ngSubmit)="guardar()" class="space-y-4">
+      <!-- Nombre -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+        <input type="text" formControlName="nombre"
+          class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Correo -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Correo</label>
+        <input type="email" formControlName="user"
+          class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <!-- Rol -->
+      <div class="mb-4" *ngIf="jwtPayload?.role === 'Admin'">
+        <label class="block font-semibold mb-1">Rol</label>
+        <select class="w-full border p-2 rounded" formControlName="rolId">
+          <option value="" disabled selected>Seleccione un rol</option>
+          <option *ngFor="let rol of roles" [value]="rol.rolId">
+            {{ rol.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Área -->
+      <div class="mb-4" *ngIf="jwtPayload?.role === 'Admin'">
+        <label class="block font-semibold mb-1">Área</label>
+        <select class="w-full border p-2 rounded" formControlName="areaId">
+          <option value="" disabled selected>Seleccione un Área</option>
+          <option *ngFor="let area of areas" [value]="area.areaId">
+            {{ area.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Contraseña (solo mostrar cuando NO hay usuario - creación) -->
+      <div *ngIf="!usuario">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+        <input type="password" formControlName="password"
+          class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required />
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-end gap-3 pt-4">
+        <button type="button" (click)="cerrar.emit()"
+          class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md transition">
+          Cancelar
+        </button>
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md transition">
+          Guardar
+        </button>
+      </div>
+    </form>
   </div>
-  
+</div>

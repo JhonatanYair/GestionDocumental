@@ -1,31 +1,50 @@
-<!-- dashboard-gestionador.component.html -->
-<div class="dashboard-container gestionador">
-    <header class="dashboard-header">
-      <h1>Panel de Gestionador</h1>
-      <div class="user-info">
-        <span> userName </span>
-        <button class="logout-btn">Salir</button>
-      </div>
-    </header>
-  
-    <div class="dashboard-grid">
-      <aside class="sidebar">
-        <ul>
-          <li><a routerLink="/gestion-documentos" class="nav-link">Documentos</a></li>
-          <li><a routerLink="/seguimiento" class="nav-link">Seguimiento</a></li>
-          <li><a routerLink="/comunicados" class="nav-link">Comunicados</a></li>
-        </ul>
-      </aside>
-  
-      <main class="main-content">
-       <!-- <router-outlet></router-outlet>  Aquí se cargarán los componentes hijos -->
-      </main>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Gestión de Documentos</h1>
+    <button class="logout-btn">Cerrar sesión</button>
+  </header>
+
+  <div class="cards-container">
+    <div class="card">
+      <h2>Total Documentos</h2>
+      <p>150</p>
     </div>
-  
-    <div class="alertas">
-      <h3>Alertas Pendientes</h3>
-      <div class="alerta-item">
-        alerta.mensaje 
-      </div>
+    <div class="card">
+      <h2>Pendientes de Revisión</h2>
+      <p>12</p>
+    </div>
+    <div class="card">
+      <h2>Aprobados</h2>
+      <p>118</p>
     </div>
   </div>
+
+  <section class="table-section">
+    <h2>Documentos Recientes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Estado</th>
+          <th>Fecha de Subida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Contrato_Proyecto_XYZ.pdf</td>
+          <td>Contrato</td>
+          <td>Pendiente</td>
+          <td>20/04/2025</td>
+        </tr>
+        <tr>
+          <td>Informe_Tecnico_Marzo.docx</td>
+          <td>Informe</td>
+          <td>Aprobado</td>
+          <td>18/04/2025</td>
+        </tr>
+        <!-- Agrega más registros aquí -->
+      </tbody>
+    </table>
+  </section>
+</div>

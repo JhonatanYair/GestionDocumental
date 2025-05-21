@@ -1,26 +1,50 @@
-<!-- dashboard-radicador.component.html -->
-<div class="dashboard-container radicador">
-    <div class="top-bar">
-      <h2>Radicación de Documentos</h2>
-      <div class="controls">
-        <button  class="btn-primary">
-          <i class="fas fa-plus"></i> Nuevo
-        </button>
-      </div>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Panel de Radicación</h1>
+    <button class="logout-btn">Cerrar sesión</button>
+  </header>
+
+  <div class="cards-container">
+    <div class="card">
+      <h2>Radicados Hoy</h2>
+      <p>15</p>
     </div>
-  
-    <div class="radicacion-container">
-      <div class="form-section">
-        <h3>Formulario de Radicación</h3>
-        <!-- Formulario aquí -->
-      </div>
-  
-      <div class="list-section">
-        <h3>Documentos Recientes</h3>
-      </div>
+    <div class="card">
+      <h2>En Espera</h2>
+      <p>4</p>
     </div>
-  
-    <footer class="dashboard-footer">
-      <p>Sesión iniciada como: <strong>userRole</strong></p>
-    </footer>
+    <div class="card">
+      <h2>Enviados</h2>
+      <p>21</p>
+    </div>
   </div>
+
+  <section class="table-section">
+    <h2>Historial de Documentos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Radicado</th>
+          <th>Tipo</th>
+          <th>Destino / Origen</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R-20250422-0015</td>
+          <td>Memorando</td>
+          <td>Dirección Jurídica</td>
+          <td>22/04/2025</td>
+        </tr>
+        <tr>
+          <td>R-20250421-0022</td>
+          <td>Carta</td>
+          <td>Oficina de Personal</td>
+          <td>21/04/2025</td>
+        </tr>
+        <!-- Puedes añadir más filas -->
+      </tbody>
+    </table>
+  </section>
+</div>
