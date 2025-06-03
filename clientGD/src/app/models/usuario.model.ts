@@ -1,3 +1,5 @@
+import { Area } from "./area.model";
+
 export interface Usuario {
     usuarioId: number;
     nombre: string;
@@ -5,5 +7,6 @@ export interface Usuario {
     rolId: number;
     areaId: number;
     password : string;
+    area? : Area
   }
   

@@ -1,0 +1,26 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-full max-w-md">
+      <h2 class="text-xl font-bold mb-4">Parametrizar documento</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="parametrizar()">
+
+        <div class="mb-4">
+          <label class="block font-semibold mb-1">Nombre del doc</label>
+          <input class="w-full border p-2 rounded" formControlName="nombreDoc" />
+        </div>
+
+        <div class="mb-4">
+          <label class="block font-semibold mb-1">Tiempo en respuesta (En días)</label>
+          <input class="w-full border p-2 rounded" formControlName="NumDays" type="number"/>
+        </div>
+
+        <div class="flex justify-end gap-2">
+          <button type="button" (click)="cerrar.emit()" class="bg-gray-300 px-4 py-2 rounded">Cancelar</button>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+
+</div>

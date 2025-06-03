@@ -33,6 +33,13 @@ namespace GD.Controllers
         [HttpPost("GetLogin")]
         public async Task<IActionResult> GetLogin([FromBody] LoginRequest loginRequest)
         {
+            var result = await _usuarioService.GetLogin(loginRequest);
+
+            if(result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(await _usuarioService.GetLogin(loginRequest));
         }
 

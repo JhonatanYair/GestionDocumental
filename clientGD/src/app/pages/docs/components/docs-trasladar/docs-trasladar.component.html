@@ -1,0 +1,46 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-full max-w-md">
+      <h2 class="text-xl font-bold mb-4">Trasladar documento</h2>
+  
+      <form [formGroup]="form" (ngSubmit)="trasladar()">
+
+        <div style="margin: 1em 0;">
+  
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700">Sede</label>
+                <select formControlName="sedeId" (change)="onSedeChange($event)"
+                class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" disabled selected>Seleccione una sede</option>
+                <option *ngFor="let sede of sedes" [value]="sede.sedeId">{{ sede.nombre }}</option>
+                </select>
+            </div>
+
+            <div *ngIf="areas.length > 0" class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700">Área</label>
+                <select formControlName="areaId" (change)="onAreaChange($event)"
+                class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" disabled selected>Seleccione un área</option>
+                <option *ngFor="let area of areas" [value]="area.areaId">{{ area.nombre }}</option>
+                </select>
+            </div>
+
+            <div *ngIf="usuarios.length > 0" class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700">Usuario destino</label>
+                <select formControlName="usuarioId"
+                class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" disabled selected>Seleccione un usuario</option>
+                <option *ngFor="let u of usuarios" [value]="u.usuarioId">{{ u.nombre }}</option>
+                </select>
+            </div>
+
+        </div>
+  
+        <div class="flex justify-end gap-2">
+          <button type="button" (click)="cerrar.emit()" class="bg-gray-300 px-4 py-2 rounded">Cancelar</button>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  

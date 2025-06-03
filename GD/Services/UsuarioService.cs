@@ -73,6 +73,7 @@ namespace GD.Services
                 {
                         new Claim(ClaimTypes.Name,login.Nombre),
                         new Claim(ClaimTypes.Role,login.Rol.Nombre),
+                        new Claim("usuarioId",login.UsuarioId.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddDays(2),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(byteKey), SecurityAlgorithms.HmacSha256Signature),

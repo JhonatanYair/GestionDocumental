@@ -1,1 +1,5 @@
+<!-- ✅ Se oculta si estás en /login -->
+<app-navbar *ngIf="router.url !== '/login'"></app-navbar>
+
+<!-- El contenido principal de la app -->
 <router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+<nav class="navbar">
+  <div class="logo">MiSitio</div>
+  <div class="nav-links">
+    <a href="/docs-list" *ngIf = "decoded?.role !== 'Radicador'">Documentos</a>
+    <a routerLink="/area-list" *ngIf = "decoded?.role === 'Admin'">Areas</a>
+    <a routerLink="/usuario-list" *ngIf = "decoded?.role === 'Admin'">Usuarios</a>
+    <a routerLink="/radicar-form" *ngIf = "decoded?.role !== 'Gestionador'">Radicar Documento</a>
+  </div>
+  <button class="logout-button" (click)="cerrarSesion()">Cerrar sesión</button>
+</nav>

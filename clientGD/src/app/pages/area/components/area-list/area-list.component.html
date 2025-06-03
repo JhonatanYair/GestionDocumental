@@ -1,30 +1,48 @@
-<div class="flex justify-between items-center mb-4">
-    <h1 class="text-2xl font-bold">Áreas</h1>
-    <button class="bg-blue-600 text-white px-4 py-2 rounded" (click)="abrirModal()">Crear área</button>
+<div class="card shadow-md bg-white rounded-lg p-6">
+  <!-- Encabezado -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">Areas</h1>
+    </div>
+    <button 
+      class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-md transition"
+      (click)="abrirModal()">
+      + Crear area
+    </button>
   </div>
-  
-  <!-- Tabla de áreas -->
-  <table class="w-full table-auto border-collapse border border-gray-300">
-    <thead>
-      <tr>
-        <th class="border p-2">ID</th>
-        <th class="border p-2">Nombre</th>
-        <th class="border p-2" *ngIf="jwtPayload?.role === 'Admin'">Sede</th>
-        <th class="border p-2">Acciones</th>
+
+  <!-- Tabla de documentos -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full text-sm text-left border border-gray-200 rounded-md overflow-hidden">
+      <thead class="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
+        <tr>
+            <th class="px-4 py-3 border-b">ID</th>
+            <th class="px-4 py-3 border-b">Nombre</th>
+            <th class="px-4 py-3 border-b" *ngIf="jwtPayload?.role === 'Admin'">Sede</th>
+            <th class="px-4 py-3 border-b">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let area of areas" class="hover:bg-gray-50 transition-colors border-b">
+          <td class="px-4 py-3">{{ area.areaId }}</td>
+          <td class="px-4 py-3">{{ area.nombre }}</td>
+          <td class="px-4 py-3" *ngIf="jwtPayload?.role === 'Admin'">{{ area.sede?.ciudad }}</td>
+          <td class="px-4 py-3 text-center">
+            <button class="text-blue-600 hover:text-blue-800 font-medium" (click)="abrirModal(area)">✏️ Editar</button>
+          </td>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let area of areas">
-        <td class="border p-2">{{ area.areaId }}</td>
-        <td class="border p-2">{{ area.nombre }}</td>
-        <td class="border p-2" *ngIf="jwtPayload?.role === 'Admin'">{{ area.sede?.ciudad }}</td>
-        <td class="border p-2">
-          <button class="text-blue-600" (click)="abrirModal(area)">Editar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+
+        <tr *ngIf="areas.length === 0">
+          <td colspan="6" class="text-center py-6 text-gray-500">
+            No hay areas registrados.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
   <!-- Modal -->
   <app-area-form
   *ngIf="mostrarModal"

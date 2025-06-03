@@ -1,0 +1,53 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Panel de Radicación</h1>
+  </header>
+
+  <div class="cards-container">
+    <div class="card">
+      <h2>Total de documentos</h2>
+      <p>{{ totalDocs }}</p>
+    </div>
+    <div class="card">
+      <h2>Radicados</h2>
+      <p>{{ numDocsRadidacos }}</p>
+    </div>
+    <div class="card">
+      <h2>Aceptados</h2>
+      <p>{{ numDocsAceptados }}</p>
+    </div>
+    <div class="card">
+      <h2>Finalizados</h2>
+      <p>{{ numDocsFinalizados }}</p>
+    </div>
+  </div>
+
+  <section class="table-section">
+    <h2>Historial de Documentos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Destino / Origen</th>
+          <th>Fecha Creacion</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of documentos; let i = index" >
+          <td>{{ doc.nombre }}</td>
+          <td>{{doc.tipo}}</td>
+          <td>{{doc.usuarioRadicador?.area?.nombre}}/{{doc.usuario?.area?.nombre}}</td>
+          <td>{{ doc.fechaCreacion }}</td>
+          <td>{{ doc.estadoActual.nombre }}</td>
+        </tr>
+        <tr *ngIf="documentos.length === 0">
+          <td colspan="6" class="text-center py-6 text-gray-500">
+            No hay documentos registrados.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

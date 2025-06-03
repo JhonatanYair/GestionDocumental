@@ -85,6 +85,12 @@ public partial class DGDbContext : DbContext
             entity.HasOne(d => d.Usuario).WithMany(p => p.Documentos)
                 .HasForeignKey(d => d.UsuarioId)
                 .HasConstraintName("Documento_ibfk_1");
+
+
+            entity.HasOne(d => d.UsuarioRadicador).WithMany(p => p.DocumentosRadicados)
+                .HasForeignKey(d => d.UsuarioRadicadorId)
+                .HasConstraintName("Documento_ibfk_4");
+
         });
 
         modelBuilder.Entity<EstadoDocumento>(entity =>

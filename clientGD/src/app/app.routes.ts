@@ -5,8 +5,10 @@ import { AreaListComponent } from './pages/area/components/area-list/area-list.c
 import { RadicarFormComponent } from './pages/radicar/components/radicar-form/radicar-form.component';
 import { canActivateGuard } from './guards/auth.guard';
 import { UsuarioListComponent } from './pages/usuario/components/usuario-list/usuario-list.component';
-import { DashboardRadicadorComponent } from './pages/dashboard-radicador/dashboard-radicador.component';
+import { DashboardRadicadorComponent } from './pages/dashboard-radicador/components/dashboard-radicador.component';
 import { DashboardGestionadorComponent } from './pages/dashboard-gestionador/dashboard-gestionador.component';
+import { DocsListComponent } from './pages/docs/components/docs-list/docs-list.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -43,6 +45,12 @@ export const routes: Routes = [
   {
     path: 'dashboard-gestionador',
     component: DashboardGestionadorComponent,
+    canActivate: [canActivateGuard],
+    data: { allowedRoles: ['Admin','Gestionador']  } // Solo para Admin - gestionador
+  },
+    {
+    path: 'docs-list',
+    component: DocsListComponent,
     canActivate: [canActivateGuard],
     data: { allowedRoles: ['Admin','Gestionador']  } // Solo para Admin - gestionador
   },

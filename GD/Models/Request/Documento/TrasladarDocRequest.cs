@@ -1,10 +1,9 @@
 ﻿namespace GD.Models.Request.Documento
 {
-    public class RadicarDocRequest
+    public class TrasladarDocRequest
     {
         public int AreaId { get; set; }
         public int UsuarioId { get; set; }
-        public IFormFile File { get; set; }
-        public int UsuarioRadicadorId { get; set; }
+        public int DocumentoId { get; set; }
     }
 }

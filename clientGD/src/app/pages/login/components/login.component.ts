@@ -26,10 +26,10 @@ export class LoginComponent {
         this.authService.guardarSede(res.sedeId);
         switch (res.rolId) {
           case 1:
-            this.router.navigate(['/dashboard-admin']);
+            this.router.navigate(['/docs-list']);
             break;
           case 2:
-            this.router.navigate(['/dashboard-gestionador']);
+            this.router.navigate(['/docs-list']);
             break;
           case 3:
             this.router.navigate(['/dashboard-radicador']);
@@ -41,6 +41,8 @@ export class LoginComponent {
       },
       error: (err) => {
         alert('Credenciales incorrectas');
+        this.usuario = "";
+        this.password = "";
       }
     });
   }

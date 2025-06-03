@@ -15,6 +15,7 @@ public partial class Documento
     public DateTime FechaCreacion { get; set; }
 
     public int? UsuarioId { get; set; }
+    public int? UsuarioRadicadorId { get; set; }
 
     public int? EstadoActualId { get; set; }
 
@@ -31,4 +32,5 @@ public partial class Documento
     public virtual ICollection<HistorialDocumento> HistorialDocumentos { get; set; } = new List<HistorialDocumento>();
 
     public virtual Usuario? Usuario { get; set; }
+    public virtual Usuario? UsuarioRadicador { get; set; }
 }

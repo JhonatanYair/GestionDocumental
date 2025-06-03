@@ -20,6 +20,7 @@ public partial class Usuario
     public virtual Area? Area { get; set; }
 
     public virtual ICollection<Documento> Documentos { get; set; } = new List<Documento>();
+    public virtual ICollection<Documento> DocumentosRadicados { get; set; } = new List<Documento>();
 
     public virtual ICollection<HistorialDocumento> HistorialDocumentos { get; set; } = new List<HistorialDocumento>();
 

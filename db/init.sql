@@ -62,15 +62,22 @@ CREATE TABLE `Documento` (
   `TiempoRespuestaDias` int DEFAULT NULL,
   `FechaAceptado` datetime DEFAULT NULL,
   `Src` mediumtext NOT NULL,
+  `UsuarioRadicadorId` int DEFAULT NULL,
   PRIMARY KEY (`DocumentoId`),
   KEY `UsuarioId` (`UsuarioId`),
   KEY `EstadoActualId` (`EstadoActualId`),
   KEY `AreaActualId` (`AreaActualId`),
+  KEY `Documento_ibfk_4_idx` (`UsuarioRadicadorId`),
   CONSTRAINT `Documento_ibfk_1` FOREIGN KEY (`UsuarioId`) REFERENCES `Usuario` (`UsuarioId`),
   CONSTRAINT `Documento_ibfk_2` FOREIGN KEY (`EstadoActualId`) REFERENCES `EstadoDocumento` (`EstadoId`),
-  CONSTRAINT `Documento_ibfk_3` FOREIGN KEY (`AreaActualId`) REFERENCES `Area` (`AreaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `Documento_ibfk_3` FOREIGN KEY (`AreaActualId`) REFERENCES `Area` (`AreaId`),
+  CONSTRAINT `Documento_ibfk_4` FOREIGN KEY (`UsuarioRadicadorId`) REFERENCES `Usuario` (`UsuarioId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Documento`
+--
 
 --
 -- Table structure for table `EstadoDocumento`
@@ -199,7 +206,7 @@ CREATE TABLE `Usuario` (
   KEY `AreaId` (`AreaId`),
   CONSTRAINT `Usuario_ibfk_1` FOREIGN KEY (`RolId`) REFERENCES `Rol` (`RolId`),
   CONSTRAINT `Usuario_ibfk_2` FOREIGN KEY (`AreaId`) REFERENCES `Area` (`AreaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +215,7 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
-INSERT INTO `Usuario` VALUES (1,'Jhonatan Peinado','jonathan@gmail.com','4a3f06ab818f057c3588be31d7216c773282fe809851a9493cbe5a072d4e169c',1,3);
+INSERT INTO `Usuario` VALUES (1,'Jhonatan Peinado','jonathan@gmail.com','4a3f06ab818f057c3588be31d7216c773282fe809851a9493cbe5a072d4e169c',1,3),(2,'Camilo Andres','camilo@gmail.com','4a3f06ab818f057c3588be31d7216c773282fe809851a9493cbe5a072d4e169c',2,4),(3,'juan','juan@gmail.com','4a3f06ab818f057c3588be31d7216c773282fe809851a9493cbe5a072d4e169c',3,2);
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -221,4 +228,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-17 10:18:35
+-- Dump completed on 2025-06-03  9:43:27

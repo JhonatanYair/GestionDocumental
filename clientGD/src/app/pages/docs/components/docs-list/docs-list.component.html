@@ -1,0 +1,118 @@
+  <div class="shadow-md bg-white rounded-lg p-6">
+  <!-- Encabezado -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">Gestión de Documentos</h1>
+    </div>
+    <!-- <button 
+      class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-md transition"
+      (click)="abrirModal()">
+      + Crear Usuario
+    </button> -->
+  </div>
+
+    <div class="cards-container">
+      <div class="card bg-blue">
+        <h2>Total Documentos</h2>
+        <p>{{ totalDocs }}</p>
+      </div>
+      <div class="card bg-yellow">
+        <h2>Radicado</h2>
+        <p>{{ totalDocsRad }}</p>
+      </div>
+      <div class="card bg-green">
+        <h2>Finalizado</h2>
+        <p>{{ totalDocsFinalizado }}</p>
+      </div>
+  </div>
+
+  <!-- Tabla de documentos -->
+  <div class="overflow-x-auto">
+    <table class="min-w-full text-sm text-left border border-gray-200 rounded-md overflow-hidden">
+      <thead class="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
+        <tr>
+            <th class="px-4 py-3 border-b">ID</th>
+            <th class="px-4 py-3 border-b">Nombre</th>
+            <th class="px-4 py-3 border-b">Tipo</th>
+            <th class="px-4 py-3 border-b">Fecha Creacion</th>
+            <th class="px-4 py-3 border-b">Estado</th>
+            <th class="px-4 py-3 border-b text-center">Acciones</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+          *ngFor="let doc of documentos; let i = index" 
+          class="hover:bg-gray-50 transition-colors border-b">
+          <td class="px-4 py-3">{{ doc.documentoId }}</td>
+          <td class="px-4 py-3">{{ doc.nombre }}</td>
+          <td class="px-4 py-3">{{ doc.tipo }}</td>
+          <td class="px-4 py-3">{{ doc.fechaCreacion }}</td>
+            <td class="px-4 py-3">
+
+                <div *ngIf = "doc.estadoActual.estadoId == 4">
+                    Finalizado
+                </div>
+
+                <select class="bg-gray-100 border rounded px-2 py-1" (change)="onEstadoChange($event, doc, i)" *ngIf = "doc.estadoActual.estadoId != 4">
+                    <option value="1"
+                            [selected]="doc.estadoActualId == 1"
+                            [disabled]="doc.estadoActualId == 1">
+                    Radicado
+                    </option>
+                    <option value="2" *ngIf = "doc.estadoActual.estadoId == 2"
+                            [selected]="doc.estadoActual.estadoId == 2"
+                            [disabled]="doc.estadoActual.estadoId == 2">
+                    Trasladado
+                    </option>
+                    <option value="3"
+                            [selected]="doc.estadoActualId == 3"
+                            [disabled]="doc.estadoActualId == 3">
+                    Aceptado
+                    </option>
+                    <option value="4">
+                        Finalizado
+                    </option>
+                </select>
+            </td>
+
+          <td class="px-4 py-3 text-center" style="font-size: 20px;">
+            <button 
+              class="text-blue-600 hover:text-blue-800 font-medium"
+              (click)="abrirDocumento(doc.src)">
+              🔍
+            </button>
+            <button class="text-blue-600 hover:text-blue-800 font-medium" *ngIf="doc.mostrarBotonGuardar"  (click)="changeEstado(doc)">
+                💾
+            </button>
+            <button *ngIf="doc.estadoActualId != 3 && doc.estadoActualId != 4" (click)="abrirModal(doc.documentoId)">
+                ↔️
+            </button>
+            <button *ngIf="doc.estadoActualId != 4" (click)="openModalParam(doc)">
+              ⚙️
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="documentos.length === 0">
+          <td colspan="6" class="text-center py-6 text-gray-500">
+            No hay documentos registrados.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- Modal -->
+  <app-docs-trasladar
+  *ngIf="mostrarModal"
+  (cerrar)="cerrarModal()"
+  [documentoId] = "trasladarDocId"
+  ></app-docs-trasladar>
+
+    <app-docs-parameter
+  *ngIf="showModalOpen"
+  (cerrar)="closeModalParam()"
+  [docParameter] = "docParameter"
+  ></app-docs-parameter>

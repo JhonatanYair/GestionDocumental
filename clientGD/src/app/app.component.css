@@ -1,0 +1,176 @@
+/* Contenedor general */
+h1 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600;     /* font-semibold */
+    color: #1f2937;       /* text-gray-800 */
+    margin-bottom: 1.5rem;
+  }
+  
+  button {
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  button.bg-blue-600 {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  button.bg-blue-600:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem; /* text-sm */
+    color: #374151;      /* text-gray-700 */
+  }
+  
+  thead {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    color: #6b7280;            /* text-gray-600 */
+    text-transform: uppercase;
+    font-size: 0.75rem;        /* text-xs */
+    letter-spacing: 0.05em;    /* tracking-wider */
+    border-bottom: 1px solid #d1d5db; /* border-gray-300 */
+  }
+  
+  th, td {
+    padding: 0.75rem 1rem;     /* px-4 py-3 */
+    text-align: left;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #e5e7eb; /* border-b */
+    transition: background-color 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    background-color: #f9fafb; /* hover:bg-gray-50 */
+  }
+  
+  /* Botón de acción */
+  button.text-blue-600 {
+    background: none;
+    color: #2563eb;
+    padding: 0;
+    font-weight: 500;
+  }
+  
+  button.text-blue-600:hover {
+    color: #1e40af;
+  }
+  
+  .status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
+.status.aprobado {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status.revision {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.status.rechazado {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.dashboard-container {
+  padding: 20px;
+  background-color: #f3f4f6;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: purple;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .navbar .logout-button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .navbar .logout-button:hover {
+      background-color: #cc0000;
+    }
+  
